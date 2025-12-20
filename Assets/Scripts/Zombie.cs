@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Zombie : MonoBehaviour
@@ -5,6 +6,9 @@ public class Zombie : MonoBehaviour
     public string codes;
     public string codes_to_str;
     Player player;
+
+    public SpriteRenderer[] arrows;
+    public Sprite[] arrowSprites;
 
     public float curSpeed;
     public float maxSpeed;
@@ -25,6 +29,8 @@ public class Zombie : MonoBehaviour
             if(player.curCodes == codes)
             {
                 print("correct");
+                player.curCodes = "";
+                Destroy(this.gameObject);
             }
             else
             {
@@ -49,32 +55,31 @@ public class Zombie : MonoBehaviour
 
     void GenerateCodes()
     {
-        if(GameManager.instance.difficulty > 0)
+        for (int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < GameManager.instance.difficulty; i++)
+            int code;
+            code = Random.Range(0, 4);
+            codes += code.ToString();
+            arrows[i].sprite = arrowSprites[code];
+            if (code == 0)
             {
-                int code;
-                code = Random.Range(0, 4);
-                codes += code.ToString();
-                if(code == 0)
-                {
-                    codes_to_str += "left / ";
-                }
-                else if(code == 1)
-                {
-                    codes_to_str += "right / ";
-                }
-                else if(code == 2)
-                {
-                    codes_to_str += "up / ";
-                }
-                else if(code == 3)
-                {
-                    codes_to_str += "down / ";
-                }
-                print(codes);
-                print(codes_to_str.ToString());
+                codes_to_str += "left / ";
             }
+            else if(code == 1)
+            {
+                codes_to_str += "right / ";
+            }
+            else if(code == 2)
+            {
+                codes_to_str += "up / ";
+            }
+            else if(code == 3)
+            {
+                codes_to_str += "down / ";
+            }
+            //print(codes);
+                
         }
+        print(codes_to_str.ToString());
     }
 }

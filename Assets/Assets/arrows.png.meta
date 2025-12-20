@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrows_0
+      name: arrows_2
       rect:
         serializedVersion: 2
         x: 0
@@ -121,7 +121,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -135,7 +135,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: arrows_1
+      name: arrows_3
       rect:
         serializedVersion: 2
         x: 16
@@ -143,7 +143,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: arrows_2
+      name: arrows_1
       rect:
         serializedVersion: 2
         x: 0
@@ -165,7 +165,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,7 +179,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: arrows_3
+      name: arrows_0
       rect:
         serializedVersion: 2
         x: 16
@@ -187,7 +187,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -214,10 +214,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arrows_0: -2429919002490121231
-      arrows_1: -1188219685
-      arrows_2: 833348564
-      arrows_3: -1473328062
+      2arrows_0: -2429919002490121231
+      arrows_0: -1473328062
+      arrows_1: 833348564
+      arrows_2: -2429919002490121231
+      arrows_3: -1188219685
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
