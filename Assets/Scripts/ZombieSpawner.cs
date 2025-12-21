@@ -3,7 +3,6 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     public GameObject zombiePrefab;
-    Zombie zombieScript;
 
     public float timeBtwSpawn;
     public float spawnTime;
@@ -27,11 +26,7 @@ public class ZombieSpawner : MonoBehaviour
 
     void SpawnZombie()
     {
-        GameObject curZombie = Instantiate(zombiePrefab, transform.position, Quaternion.identity);
-        if(curZombie != null)
-        {
-            zombieScript = curZombie.GetComponent<Zombie>();
-        }
+        Instantiate(zombiePrefab, transform.position, Quaternion.identity);
         spawnTime = timeBtwSpawn;
     }
 }

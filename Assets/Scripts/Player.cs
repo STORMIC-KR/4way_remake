@@ -1,35 +1,62 @@
+using Mono.Cecil.Cil;
+using NUnit.Framework;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public string curCodes;
-
-    void Start()
-    {
-        
-    }
+    public GameObject arrows;
+    public Sprite[] arrowSprites;
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            curCodes += "0";
+            AddKeyNumber("0");
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            curCodes += "1";
+            AddKeyNumber("1");
         }
-        else if(Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            curCodes += "2";
+            AddKeyNumber("2");
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            curCodes += "3";
+            AddKeyNumber("3");
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
+        
+    }
+
+    void AddKeyNumber(string numK)
+    {
+        curCodes += numK;
+        arrows.transform.GetChild(curCodes.Length - 1).GetComponent<SpriteRenderer>().sprite = arrowSprites[int.Parse(numK)];
+        if(curCodes.Length == 4)
         {
-            curCodes = "";
+            Invoke("ResetSprites", 0.1f);
+            CompareToZombies();
+            
         }
     }
+
+    void CompareToZombies()
+    {
+        Zombie[] zombies = Object.FindObjectsByType<Zombie>(FindObjectsSortMode.None);
+        foreach(Zombie zombie in zombies)
+        {
+            zombie.CheckKeyMatch(curCodes);
+        }
+    }
+
+    void ResetSprites()
+    {
+        for (int i = 0; i < curCodes.Length; i++)
+        {
+            arrows.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
+        }
+        curCodes = null;
+    }
+
 }
