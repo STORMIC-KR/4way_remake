@@ -99,4 +99,13 @@ public class Zombie : MonoBehaviour
             print("wrong");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Wall"))
+        {
+            print("collide");
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public string curCodes;
     public GameObject arrows;
     public Sprite[] arrowSprites;
+    public AudioSource audioSource;
+    public AudioClip[] clips; //0: click, 1: defeat, 2: dml_1, 3: dml_2
 
     void Update()
     {
@@ -32,12 +34,15 @@ public class Player : MonoBehaviour
     void AddKeyNumber(string numK)
     {
         curCodes += numK;
-        arrows.transform.GetChild(curCodes.Length - 1).GetComponent<SpriteRenderer>().sprite = arrowSprites[int.Parse(numK)];
+        arrows.transform.GetChild(curCodes.Length - 1).GetComponent<SpriteRenderer>().sprite = arrowSprites[int.Parse(numK)]; //???
+        if(audioSource.clip != clips[0])
+        {
+            audioSource.clip = clips[0];
+        }
+        audioSource.Play();
         if(curCodes.Length == 4)
         {
-            Invoke("ResetSprites", 0.1f);
-            CompareToZombies();
-            
+            ResetSprites();
         }
     }
 
@@ -56,6 +61,7 @@ public class Player : MonoBehaviour
         {
             arrows.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
         }
+        CompareToZombies();
         curCodes = null;
     }
 
